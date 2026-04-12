@@ -29,7 +29,8 @@ export default buildConfig({
       access: {
       create: () => true,
       read: () => true,   // Add this! Allows public to check if the collection exists/view metadata
-      update: ({ req: { user } }) => !!user
+      update: ({ req: { user } }) => !!user,
+      delete: ({ req: { user } }) => !!user
       },
       slug: 'admissions',
       labels: { singular: 'Admission', plural: 'Admissions' },
@@ -52,7 +53,8 @@ export default buildConfig({
       access: {
         create: () => true, // allow public submission
         read: () => true,   // Add this! Allows public to check if the collection exists/view metadata
-      update: ({ req: { user } }) => !!user
+        update: ({ req: { user } }) => !!user,
+        delete: ({ req: { user } }) => !!user,
       },
       fields: [
         {
