@@ -22,10 +22,14 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
+
+
   collections: [Users, Media, Hero,
     {
       access: {
       create: () => true,
+      read: () => true,   // Add this! Allows public to check if the collection exists/view metadata
+      update: ({ req: { user } }) => !!user
       },
       slug: 'admissions',
       labels: { singular: 'Admission', plural: 'Admissions' },
@@ -47,6 +51,8 @@ export default buildConfig({
       },
       access: {
         create: () => true, // allow public submission
+        read: () => true,   // Add this! Allows public to check if the collection exists/view metadata
+      update: ({ req: { user } }) => !!user
       },
       fields: [
         {
@@ -94,6 +100,7 @@ export default buildConfig({
     'http://localhost:3001/admin',
     'http://10.28.209.232:5173',
     'http://10.28.209.232:3000',
+    'https://school-three-kappa.vercel.app'
   ].filter(Boolean),
   csrf: [
   
@@ -104,8 +111,11 @@ export default buildConfig({
     'http://localhost:3001/admin',
     'http://10.28.209.232:5173',
     'http://10.28.209.232:3000',
+    'https://school-three-kappa.vercel.app'
   ].filter(Boolean),
 
+
+  
 
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
