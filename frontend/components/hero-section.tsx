@@ -1,12 +1,4 @@
-
-async function getHeroData() {
-  const res = await fetch("http://localhost:3000/api/hero?limit=1", {
-    cache: "no-store",
-  })
-
-  const data = await res.json()
-  return data.docs[0]
-}
+import { getHeroData } from "@/lib/api"
 
 export async function HeroSection() {
   const hero = await getHeroData()
