@@ -8,10 +8,6 @@ const dirname = path.dirname(__filename)
 
 const nextConfig: NextConfig = {
   devIndicators: false,
-
-  // ✅ ADD THIS LINE (VERY IMPORTANT)
-  output: "standalone",
-
   webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {
       '.cjs': ['.cts', '.cjs'],
@@ -21,7 +17,6 @@ const nextConfig: NextConfig = {
 
     return webpackConfig
   },
-
   turbopack: {
     root: path.resolve(dirname),
   },
